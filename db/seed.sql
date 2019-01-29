@@ -31,6 +31,7 @@ CREATE TABLE tutors (
     rating double precision,
     subject TEXT [],
     price int not null,
+    state boolean not null,
     user_id int not null,
     FOREIGN KEY (user_id) REFERENCES users
 );
@@ -53,14 +54,16 @@ INSERT INTO users (email, password, type) VALUES
 ;
 
 INSERT INTO students (user_id,name, gender, location, phone_number) VALUES 
-    (1,'Moroj', 'F', ST_GeomFromText('POINT(24.664221 46.681899)' , 4326), '0987654')
+    (1,'Moroj', 'F', ST_GeomFromText('POINT(24.6613372 46.6807383)' , 4326), '0987654')
 ;
 
-INSERT INTO tutors (user_id, name, gender, location, phone_number,price ) VALUES
-    (2,'Nada', 'F', ST_GeomFromText('POINT(24.664221 46.681899)' , 4326), '09876543', 20),
-    (3,'Yahya', 'F', ST_GeomFromText('POINT(24.664221 46.681899)' , 4326), '097654', 10)
+INSERT INTO tutors (user_id, name, gender, location, phone_number, price, state) VALUES
+    (2,'Nada', 'F', ST_GeomFromText('POINT(24.7155904 46.6548654)' , 4326), '09876543', 20, true),
+    (3,'Yahya', 'M', ST_GeomFromText('POINT(20.240377 47.791984)' , 4326), '097654', 10, true)
 ;
 
 INSERT INTO requests (studnet_id, tutor_id, subject, duration, cost) VALUES
     (1, 2, 'math', '2', '200')
 ;
+
+-- SELECT students.name, tutors.name FROM students, tutors WHERE ST_DWithin(students.location, tutors.location, 100);
