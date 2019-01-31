@@ -15,7 +15,7 @@ request.create = function (req, res, next) {
 }
 
 request.getAllStudentReq = function (req, res, next) {
-    db.manyOrNone('SELECT * FROM requests WHERE (studnet_id=$1) AND (status="active" OR status="pending");',
+    db.manyOrNone("SELECT * FROM requests WHERE (studnet_id=$1) AND (status='active' OR status='pending');",
     [req.body.studnet_id])
     .then(result => {
         res.locals.requests = result;
@@ -40,8 +40,17 @@ request.getAllTutorReq = function (req, res, next) {
     })
 }
 
-
-
-
+request.update = function (req, res, next) {
+    db.one("UPDATE requests SET status=$1 WHERE id=$2 RETURNING *;",
+    [req.body.status, req.body.id])
+    .then(result => {
+        res.locals.requests = result;
+        next()
+    })
+    .catch(error => {
+        console.log(error);
+        next()
+    })
+}
 
 module.exports = request;
