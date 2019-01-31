@@ -1,0 +1,75 @@
+2019-01-28 17:57:30.471 +03 [47444] LOG:  listening on IPv6 address "::1", port 5432
+2019-01-28 17:57:30.471 +03 [47444] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-01-28 17:57:30.472 +03 [47444] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2019-01-28 17:57:30.486 +03 [47445] LOG:  database system was shut down at 2019-01-28 17:57:16 +03
+2019-01-28 17:57:30.490 +03 [47444] LOG:  database system is ready to accept connections
+2019-01-28 17:57:33.920 +03 [47453] FATAL:  database "yahyamo." does not exist
+2019-01-28 17:58:02.047 +03 [47456] FATAL:  database "postgre" does not exist
+2019-01-28 17:58:14.540 +03 [47458] ERROR:  syntax error at or near "CREATTE" at character 1
+2019-01-28 17:58:14.540 +03 [47458] STATEMENT:  CREATTE DATABASE yahyamo ;
+2019-01-28 17:58:19.141 +03 [47460] FATAL:  database "yahyamo." does not exist
+2019-01-28 17:58:37.322 +03 [47462] ERROR:  syntax error at or near "CREATTE" at character 1
+2019-01-28 17:58:37.322 +03 [47462] STATEMENT:  CREATTE DATABASE yahyamo. ;
+2019-01-28 17:58:44.305 +03 [47462] ERROR:  syntax error at or near "." at character 24
+2019-01-28 17:58:44.305 +03 [47462] STATEMENT:  CREATE DATABASE yahyamo. ;
+2019-01-28 17:58:56.533 +03 [47465] FATAL:  database "yahyamo." does not exist
+2019-01-28 18:05:29.514 +03 [47472] ERROR:  column "hghgvg" does not exist at character 37
+2019-01-28 18:05:29.514 +03 [47472] STATEMENT:  insert into point(location) values( "hghgvg");
+2019-01-28 18:08:32.801 +03 [47472] ERROR:  function st_geomfromtext(numeric, numeric) does not exist at character 37
+2019-01-28 18:08:32.801 +03 [47472] HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+2019-01-28 18:08:32.801 +03 [47472] STATEMENT:  insert into point(location) values( ST_GeomFromText( 24.664221,  46.681899));
+2019-01-28 18:09:43.295 +03 [47472] ERROR:  syntax error at or near "point" at character 10
+2019-01-28 18:09:43.295 +03 [47472] STATEMENT:  SELECT * point
+	;
+2019-01-28 18:10:19.965 +03 [47472] ERROR:  syntax error at or near ".664221" at character 61
+2019-01-28 18:10:19.965 +03 [47472] STATEMENT:  insert into point(location) values( ST_GeomFromText( Poimn24.664221,  46.681899));
+2019-01-28 18:10:38.174 +03 [47472] ERROR:  function st_geomfromtext(point) does not exist at character 37
+2019-01-28 18:10:38.174 +03 [47472] HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+2019-01-28 18:10:38.174 +03 [47472] STATEMENT:  insert into point(location) values( ST_GeomFromText( POINT(24.664221,  46.681899)));
+2019-01-28 18:13:08.236 +03 [47472] ERROR:  syntax error at or near ".664221" at character 67
+2019-01-28 18:13:08.236 +03 [47472] STATEMENT:  insert into point(location) values( "Geo".ST_GeomFromText( Poimn24.664221,  46.681899));
+2019-01-28 18:13:30.347 +03 [47472] ERROR:  schema "Geo" does not exist at character 37
+2019-01-28 18:13:30.347 +03 [47472] STATEMENT:  insert into point(location) values( "Geo".ST_GeomFromText( 'Point(24.664221,  46.681899)'));
+2019-01-28 18:15:00.990 +03 [47472] ERROR:  schema "st_geomfromtext" does not exist at character 37
+2019-01-28 18:15:00.990 +03 [47472] STATEMENT:  insert into point(location) values( ST_GeomFromText.Point( 24.664221,  46.681899));
+2019-01-28 18:15:16.954 +03 [47472] ERROR:  schema "st_geomfromtext" does not exist at character 37
+2019-01-28 18:15:16.954 +03 [47472] STATEMENT:  insert into point(location) values( ST_GeomFromText.Point(( 24.664221,  46.681899)));
+2019-01-28 18:25:34.527 +03 [47715] ERROR:  type "geometry" does not exist at character 108
+2019-01-28 18:25:34.527 +03 [47715] STATEMENT:  CREATE TABLE IF NOT EXISTS "student" ("id"   SERIAL ,"phone" VARCHAR(255), "name" VARCHAR(255), "location" GEOMETRY(POINT,4326), "email" VARCHAR(255), "created_at" TIMESTAMP WITH TIME ZONE NOT NULL, "updated_at" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("id"));
+2019-01-28 18:26:42.197 +03 [47715] ERROR:  required extension "postgis" is not installed
+2019-01-28 18:26:42.197 +03 [47715] HINT:  Use CREATE EXTENSION ... CASCADE to install required extensions too.
+2019-01-28 18:26:42.197 +03 [47715] STATEMENT:  CREATE EXTENSION postgis_topology;
+2019-01-28 18:27:25.482 +03 [47715] ERROR:  schema "st_geomfromtext" does not exist at character 39
+2019-01-28 18:27:25.482 +03 [47715] STATEMENT:  insert into student(location) values( ST_GeomFromText.Point(( 24.664221,  46.681899)));
+2019-01-28 18:27:34.069 +03 [47715] ERROR:  function st_geomfromtext(record) does not exist at character 39
+2019-01-28 18:27:34.069 +03 [47715] HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+2019-01-28 18:27:34.069 +03 [47715] STATEMENT:  insert into student(location) values( ST_GeomFromText(( 24.664221,  46.681899)));
+2019-01-28 18:27:50.381 +03 [47715] ERROR:  parse error - invalid geometry
+2019-01-28 18:27:50.381 +03 [47715] HINT:  "Point( 24.664221,  " <-- parse error at position 19 within geometry
+2019-01-28 18:27:50.381 +03 [47715] STATEMENT:  insert into student(location) values( ST_GeomFromText('Point( 24.664221,  46.681899)'));
+2019-01-28 18:28:23.894 +03 [47715] ERROR:  parse error - invalid geometry
+2019-01-28 18:28:23.894 +03 [47715] HINT:  "Point( 24.664221,  " <-- parse error at position 19 within geometry
+2019-01-28 18:28:23.894 +03 [47715] STATEMENT:  insert into student(location) values( ST_GeomFromText('Point( 24.664221,  46.681899)' , 4326));
+2019-01-28 18:28:40.282 +03 [47715] ERROR:  parse error - invalid geometry
+2019-01-28 18:28:40.282 +03 [47715] HINT:  "POINT( 24.664221, 4" <-- parse error at position 19 within geometry
+2019-01-28 18:28:40.282 +03 [47715] STATEMENT:  insert into student(location) values( ST_GeomFromText('POINT( 24.664221, 46.681899)' , 4326));
+2019-01-28 18:29:00.955 +03 [47715] ERROR:  null value in column "created_at" violates not-null constraint
+2019-01-28 18:29:00.955 +03 [47715] DETAIL:  Failing row contains (1, null, null, 0101000020E6100000015130630AAA38406A16687748574740, null, null, null).
+2019-01-28 18:29:00.955 +03 [47715] STATEMENT:  insert into student(location) values( ST_GeomFromText('POINT(24.664221 46.681899)' , 4326));
+2019-01-28 18:30:13.004 +03 [47715] ERROR:  INSERT has more target columns than expressions at character 32
+2019-01-28 18:30:13.004 +03 [47715] STATEMENT:  insert into student(location , updated_at , created_at) values( ST_GeomFromText('POINT(24.664221 46.681899)' , 4326));
+2019-01-29 12:18:11.675 +03 [50571] ERROR:  syntax error at or near "GEOGRAPHY" at character 17
+2019-01-29 12:18:11.675 +03 [50571] STATEMENT:  DECLARE cuurent GEOGRAPHY = ST_GeomFromText('POINT(24.664221 46.681899)',4326)
+	;
+2019-01-29 12:18:43.556 +03 [50571] ERROR:  syntax error at or near "Geom" at character 17
+2019-01-29 12:18:43.556 +03 [50571] STATEMENT:  DECLARE cuurent Geom = ST_GeomFromText('POINT(24.664221 46.681899)',4326)
+	;
+2019-01-29 12:18:53.031 +03 [50571] ERROR:  syntax error at or near "=" at character 17
+2019-01-29 12:18:53.031 +03 [50571] STATEMENT:  DECLARE cuurent = ST_GeomFromText('POINT(24.664221 46.681899)',4326)
+	;
+2019-01-29 12:19:10.777 +03 [50571] ERROR:  syntax error at or near "=" at character 17
+2019-01-29 12:19:10.777 +03 [50571] STATEMENT:  DECLARE cuurent = ST_GeomFromText('POINT(24.664221 46.681899)',4326)
+	;
+2019-01-29 13:54:34.450 +03 [50571] ERROR:  syntax error at or near "=" at character 17
+2019-01-29 13:54:34.450 +03 [50571] STATEMENT:  DECLARE cuurent = ST_GeomFromText('POINT(24.664221 46.681899)',4326)
+	;

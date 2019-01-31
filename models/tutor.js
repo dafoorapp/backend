@@ -44,7 +44,7 @@ tutor.update = function (req, res, next) {
 
 // req.body.student_location
 tutor.getByStudentLocation = function (req, res, next) {
-    db.manyOrNone("SELECT * FROM tutors WHERE ST_DWithin($1, tutors.location, 100);",
+    db.manyOrNone("SELECT * FROM tutors WHERE ST_DWithin($1, tutors.location, 1);",
     [req.body.student_location])
     .then(result => {
         res.locals.tutors = result;
