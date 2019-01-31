@@ -73,3 +73,64 @@
 2019-01-29 13:54:34.450 +03 [50571] ERROR:  syntax error at or near "=" at character 17
 2019-01-29 13:54:34.450 +03 [50571] STATEMENT:  DECLARE cuurent = ST_GeomFromText('POINT(24.664221 46.681899)',4326)
 	;
+2019-01-31 17:40:43.568 +03 [74262] ERROR:  null value in column "email" violates not-null constraint
+2019-01-31 17:40:43.568 +03 [74262] DETAIL:  Failing row contains (4, null, null, null).
+2019-01-31 17:40:43.568 +03 [74262] STATEMENT:  INSERT INTO users (email, type) VALUES (null, null) RETURNING *;
+2019-01-31 17:41:02.726 +03 [74264] ERROR:  null value in column "email" violates not-null constraint
+2019-01-31 17:41:02.726 +03 [74264] DETAIL:  Failing row contains (5, null, null, null).
+2019-01-31 17:41:02.726 +03 [74264] STATEMENT:  INSERT INTO users (email, type) VALUES (null, null) RETURNING *;
+2019-01-31 17:42:11.138 +03 [74270] ERROR:  null value in column "email" violates not-null constraint
+2019-01-31 17:42:11.138 +03 [74270] DETAIL:  Failing row contains (6, null, null, null).
+2019-01-31 17:42:11.138 +03 [74270] STATEMENT:  INSERT INTO users (email, type) VALUES (null, null) RETURNING *;
+2019-01-31 17:43:11.577 +03 [74275] ERROR:  null value in column "password" violates not-null constraint
+2019-01-31 17:43:11.577 +03 [74275] DETAIL:  Failing row contains (7, moroj@gmail.com, null, student).
+2019-01-31 17:43:11.577 +03 [74275] STATEMENT:  INSERT INTO users (email, type) VALUES ('moroj@gmail.com', 'student') RETURNING *;
+2019-01-31 17:43:16.285 +03 [74275] ERROR:  null value in column "password" violates not-null constraint
+2019-01-31 17:43:16.285 +03 [74275] DETAIL:  Failing row contains (8, moroj@gmail.com, null, student).
+2019-01-31 17:43:16.285 +03 [74275] STATEMENT:  INSERT INTO users (email, type) VALUES ('moroj@gmail.com', 'student') RETURNING *;
+2019-01-31 17:46:58.519 +03 [74295] ERROR:  null value in column "password" violates not-null constraint
+2019-01-31 17:46:58.519 +03 [74295] DETAIL:  Failing row contains (9, moroj@gmail.com, null, student).
+2019-01-31 17:46:58.519 +03 [74295] STATEMENT:  INSERT INTO users (email, type) VALUES ('moroj@gmail.com', 'student') RETURNING *;
+2019-01-31 17:48:00.463 +03 [74309] ERROR:  duplicate key value violates unique constraint "users_email_key"
+2019-01-31 17:48:00.463 +03 [74309] DETAIL:  Key (email)=(moroj@gmail.com) already exists.
+2019-01-31 17:48:00.463 +03 [74309] STATEMENT:  INSERT INTO users (email, type) VALUES ('moroj@gmail.com', 'student') RETURNING *;
+2019-01-31 17:57:45.873 +03 [74411] ERROR:  syntax error at or near "24.7515221" at character 130
+2019-01-31 17:57:45.873 +03 [74411] STATEMENT:  INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ('morojjjj', 'F', '3456243', ST_GeomFromText('POINT('24.7515221 46.7991514')' , 4326), '6') RETURNING *;
+2019-01-31 17:59:10.511 +03 [74421] ERROR:  syntax error at or near "24.7515221" at character 130
+2019-01-31 17:59:10.511 +03 [74421] STATEMENT:  INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ('morojjjj', 'F', '3456243', ST_GeomFromText('POINT('24.7515221 46.7991514')' , 4326), '6') RETURNING *;
+2019-01-31 18:00:29.571 +03 [74436] ERROR:  syntax error at or near "24.7515221" at character 130
+2019-01-31 18:00:29.571 +03 [74436] STATEMENT:  INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ('morojjjj', 'F', '3456243', ST_GeomFromText('POINT('24.7515221 46.7991514')' , 4326), '6') RETURNING *;
+2019-01-31 18:01:19.517 +03 [74449] ERROR:  syntax error at or near "24.7515221" at character 130
+2019-01-31 18:01:19.517 +03 [74449] STATEMENT:  INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ('morojjjj', 'F', '3456243', ST_GeomFromText('POINT('24.7515221 46.7991514')',4326), '6') RETURNING *;
+2019-01-31 18:07:02.743 +03 [74512] ERROR:  invalid input syntax for type point: "24.7515221 46.7991514" at character 128
+2019-01-31 18:07:02.743 +03 [74512] STATEMENT:  INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ('morojjjj', 'F', '3456243', ST_GeomFromText(POINT('24.7515221 46.7991514'),4326), '6') RETURNING *;
+2019-01-31 18:18:09.408 +03 [74638] ERROR:  parse error - invalid geometry
+2019-01-31 18:18:09.408 +03 [74638] HINT:  "POINT('2" <-- parse error at position 8 within geometry
+2019-01-31 18:18:09.408 +03 [74638] STATEMENT:  INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ('morojjjj', 'F', '3456243', ST_GeomFromText('POINT(''24.7515221 46.7991514'')',4326), '6') RETURNING *;
+2019-01-31 18:24:43.717 +03 [74674] ERROR:  parse error - invalid geometry
+2019-01-31 18:24:43.717 +03 [74674] HINT:  "POINT('2" <-- parse error at position 8 within geometry
+2019-01-31 18:24:43.717 +03 [74674] STATEMENT:  INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ('morojjjj', 'F', '3456243', ST_GeomFromText('POINT(''24.7515221 46.7991514'')',4326), '6') RETURNING *;
+2019-01-31 18:27:45.436 +03 [74705] ERROR:  parse error - invalid geometry
+2019-01-31 18:27:45.436 +03 [74705] HINT:  "POINT('2" <-- parse error at position 8 within geometry
+2019-01-31 18:27:45.436 +03 [74705] STATEMENT:  INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ('morojjjj', 'F', '3456243', ST_GeomFromText('POINT(''24.7515221 46.7991514'')',4326), '6') RETURNING *;
+2019-01-31 18:28:21.267 +03 [74711] ERROR:  syntax error at or near "24.7515221" at character 130
+2019-01-31 18:28:21.267 +03 [74711] STATEMENT:  INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ('morojjjj', 'F', '3456243', ST_GeomFromText('POINT('24.7515221 46.7991514')',4326), '6') RETURNING *;
+2019-01-31 18:29:03.082 +03 [74730] ERROR:  parse error - invalid geometry
+2019-01-31 18:29:03.082 +03 [74730] HINT:  "POINT('2" <-- parse error at position 8 within geometry
+2019-01-31 18:29:03.082 +03 [74730] STATEMENT:  INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ('morojjjj', 'F', '3456243', ST_GeomFromText('POINT(''24.7515221 46.7991514'')',4326), '6') RETURNING *;
+2019-01-31 18:29:55.531 +03 [74738] ERROR:  syntax error at or near "")"" at character 153
+2019-01-31 18:29:55.531 +03 [74738] STATEMENT:  INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ('morojjjj', 'F', '3456243', ST_GeomFromText("POINT("'24.7515221 46.7991514'")",4326), '6') RETURNING *;
+2019-01-31 18:30:24.297 +03 [74757] ERROR:  parse error - invalid geometry
+2019-01-31 18:30:24.297 +03 [74757] HINT:  "POINT('2" <-- parse error at position 8 within geometry
+2019-01-31 18:30:24.297 +03 [74757] STATEMENT:  INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ('morojjjj', 'F', '3456243', ST_GeomFromText('POINT(''24.7515221 46.7991514'')',4326), '6') RETURNING *;
+2019-01-31 18:49:33.337 +03 [74878] ERROR:  parse error - invalid geometry
+2019-01-31 18:49:33.337 +03 [74878] HINT:  "POINT('2" <-- parse error at position 8 within geometry
+2019-01-31 18:49:33.337 +03 [74878] STATEMENT:  INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ('morojjjj', 'F', '3456243', ST_GeomFromText('POINT(''24.7515221 46.7991514'')',4326), '6') RETURNING *;
+2019-01-31 18:50:27.890 +03 [74892] ERROR:  parse error - invalid geometry
+2019-01-31 18:50:27.890 +03 [74892] HINT:  "POINT('3" <-- parse error at position 8 within geometry
+2019-01-31 18:50:27.890 +03 [74892] STATEMENT:  INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ('morojjjj', 'F', '3456243', ST_GeomFromText('POINT(''34.7515221 46.7991514'')',4326), '6') RETURNING *;
+2019-01-31 18:51:21.100 +03 [74905] ERROR:  parse error - invalid geometry
+2019-01-31 18:51:21.100 +03 [74905] HINT:  "POINT('2" <-- parse error at position 8 within geometry
+2019-01-31 18:51:21.100 +03 [74905] STATEMENT:  INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ('morojjjj', 'F', '3456243', ST_GeomFromText('POINT(''24.7515221 46.7991514'')',4326), '6') RETURNING *;
+2019-01-31 18:52:16.765 +03 [74928] ERROR:  syntax error at or near "24.7515221" at character 130
+2019-01-31 18:52:16.765 +03 [74928] STATEMENT:  INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ('morojjjj', 'F', '3456243', ST_GeomFromText('POINT('24.7515221 46.7991514')',4326), '6') RETURNING *;

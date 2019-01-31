@@ -3,8 +3,12 @@ const student = {};
 
 // req.body.user_id
 student.create = function (req, res, next) {
-    db.one("INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ($1, $2, $3, $4, $5) RETURNING *;",
-    [req.body.name, req.body.gender, req.body,phone_number, req.body.location, req.body.user_id])
+    console.log(req.body.location);
+    let location = req.body.location;
+    // console.logparseInt(location)
+
+    db.one("INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ($1, $2, $3, ST_GeomFromText('POINT($4)',4326), $5) RETURNING *;",
+    [req.body.name, req.body.gender, req.body.phone_number, req.body.location, req.body.user_id])
     .then(result => {
         res.locals.student = result;
         next()
