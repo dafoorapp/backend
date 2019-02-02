@@ -19,9 +19,11 @@ student.create = function (req, res, next) {
 
 //find user 
 student.find = function (req, res, next) {
+    console.log('jsdjsajd');
     db.oneOrNone("SELECT * FROM students WHERE user_id=$1;",
     [req.params.user_id])
     .then(result => {
+        console.log(result);
         res.locals.student = result;
         next()
     })
@@ -33,8 +35,10 @@ student.find = function (req, res, next) {
 
 //req.params.user_id
 student.update = function (req, res, next) {
-    db.one("UPDATE students SET name=$1, gender=$2, phone_number=$3, location=$4 WHERE user_id=$5 RETURNING *;", 
-    [req.body.name, req.body.gender, req.body.phone_number, req.body.location ,req.params.user_id])
+    const location = req.body.location;
+    console.log(req.params.user_id);
+    db.one(`UPDATE students SET name=$1, gender=$2, phone_number=$3, location = ST_GeomFromText('POINT(${location})',4326) WHERE user_id=$4 RETURNING *;`, 
+    [req.body.name, req.body.gender, req.body.phone_number ,req.params.user_id])
     .then(result => {
         res.locals.student = result;
         next()
