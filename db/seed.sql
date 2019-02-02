@@ -50,16 +50,18 @@ CREATE TABLE requests (
 INSERT INTO users (email, type) VALUES 
     ('moroj@gmail.com', 'student'),
     ('nada@gmail.com', 'tutor'),
-    ('yahya@gmail.com', 'tutor')
+    ('yahya@gmail.com', 'tutor'),
+    ('sraj@sraj.com' , 'student')
 ;
 
 INSERT INTO students (user_id,name, gender, location, phone_number) VALUES 
-    (1,'Moroj', 'F', ST_GeomFromText('POINT(24.6613372 46.6807383)' , 4326), '0987654')
+    (1,'Moroj', 'F', ST_GeomFromText('POINT(24.6613372 46.6807383)' , 4326), '0987654'),
+    (4,'Sraj', 'M', ST_GeomFromText('POINT(24.6613372 46.6807388)' , 4326), '0987655')
 ;
 
-INSERT INTO tutors (user_id, name, gender, location, phone_number, price, state) VALUES
-    (2,'Nada', 'F', ST_GeomFromText('POINT(24.7155904 46.6548654)' , 4326), '09876543', 20, true),
-    (3,'Yahya', 'M', ST_GeomFromText('POINT(20.240377 47.791984)' , 4326), '097654', 10, true)
+INSERT INTO tutors (user_id, name, gender, location, phone_number, subject, rating, price, state) VALUES
+    (2,'Nada', 'F', ST_GeomFromText('POINT(24.7155904 46.6548654)' , 4326), '09876543', '{"Math" , "Physics"}', 5, 20, true),
+    (3,'Yahya', 'M', ST_GeomFromText('POINT(20.240377 47.791984)' , 4326), '097654', '{"Math" ,"Computer"}', 3.5, 10, true)
 ;
 
 INSERT INTO requests (studnet_id, tutor_id, subject, duration, cost , status) VALUES
