@@ -17,7 +17,7 @@ user.create = function (req, res, next) {
 // find user by email
 user.find = function (req, res, next) {
     db.oneOrNone("SELECT * FROM users WHERE email=$1;",
-    [req.body.email])
+    [req.params.email])
     .then(result => {
         res.locals.user = result;
         next()

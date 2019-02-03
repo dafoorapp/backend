@@ -40,9 +40,10 @@ CREATE TABLE requests (
     subject varchar not null,
     duration varchar not null,
     cost varchar not null,
+    status varchar not null,
+    date date not null,
     studnet_id int not null,
     tutor_id int not null,
-    status varchar not null,
     FOREIGN KEY (studnet_id) REFERENCES users,
     FOREIGN KEY (tutor_id) REFERENCES users
 );
