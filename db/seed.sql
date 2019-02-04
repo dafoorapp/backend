@@ -69,4 +69,5 @@ INSERT INTO requests (studnet_id, tutor_id, subject, duration, cost , status) VA
     (1, 2, 'math', '2', '200', 'active')
 ;
 
+
 -- SELECT students.name, tutors.name FROM students, tutors WHERE ST_DWithin(students.location, tutors.location, 100);
