@@ -40,9 +40,10 @@ CREATE TABLE requests (
     subject varchar not null,
     duration varchar not null,
     cost varchar not null,
+    status varchar not null,
+    date date not null,
     studnet_id int not null,
     tutor_id int not null,
-    status varchar not null,
     FOREIGN KEY (studnet_id) REFERENCES users,
     FOREIGN KEY (tutor_id) REFERENCES users
 );
@@ -67,5 +68,6 @@ INSERT INTO tutors (user_id, name, gender, location, phone_number, subject, rati
 INSERT INTO requests (studnet_id, tutor_id, subject, duration, cost , status) VALUES
     (1, 2, 'math', '2', '200', 'active')
 ;
+
 
 -- SELECT students.name, tutors.name FROM students, tutors WHERE ST_DWithin(students.location, tutors.location, 100);
