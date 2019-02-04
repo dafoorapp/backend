@@ -5,7 +5,7 @@ const user = require('../models/user');
 
 const sendUser = ((req,res) => res.json(res.locals.user));
 
-router.get('/', user.find ,sendUser);
+router.get('/:email', user.find ,sendUser);
 router.post('/', user.create ,sendUser);
 
 module.exports = router;
