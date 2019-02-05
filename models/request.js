@@ -2,8 +2,8 @@ const db = require('../db/config');
 const request = {};
 
 request.create = function (req, res, next) {
-    db.one("INSERT INTO requests (subject, duration, cost, studnet_id, tutor_id, status) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;",
-    [req.body.subject, req.body.duration, req.body.cost, req.body.studnet_id, req.body.tutor_id, req.body.status])
+    db.one("INSERT INTO requests (subject, duration, cost, student_id, tutor_id, status, date) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;",
+    [req.body.subject, req.body.duration, req.body.cost, req.body.student_id, req.body.tutor_id, req.body.status, req.body.date])
     .then(result => {
         res.locals.request = result;
         next()
@@ -15,10 +15,11 @@ request.create = function (req, res, next) {
 }
 
 request.getAllStudentReq = function (req, res, next) {
-    db.manyOrNone("SELECT * FROM requests WHERE (studnet_id=$1) AND (status='active' OR status='pending');",
-    [req.params.studnet_id])
+    // SELECT * from requests, students where requests.student_id = students.user_id AND ;
+    // SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, tutors.name FROM requests, tutors WHERE student_id=$1 AND requests.tutors_id = tutors.user_id;
+    db.manyOrNone("SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, tutors.name FROM requests, tutors WHERE student_id=$1 AND requests.tutor_id = tutors.user_id;",
+    [req.params.student_id])
     .then(result => {
-
         res.locals.requests = result;
         next()
     })
@@ -28,8 +29,12 @@ request.getAllStudentReq = function (req, res, next) {
     })
 }
 
+// SELECT * FROM requests INNER JOIN tutors ON (requests.tutor_id = 2) WHERE (studnet_id=$1) AND (status='active' OR status='pending');
+
 request.getAllTutorReq = function (req, res, next) {
-    db.manyOrNone("SELECT * FROM requests WHERE tutor_id=$1",
+    // SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, tutors.name FROM requests, students WHERE tutor_id=$1 AND requests.student_id = students.user_id;
+    //SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, students.name FROM requests INNER JOIN students ON (requests.student_id = students.user_id) WHERE (tutor_id=2);
+    db.manyOrNone("SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, students.name FROM requests, students WHERE student_id=$1 AND requests.student_id = students.user_id;",
     [req.params.tutor_id])
     .then(result => {
         res.locals.requests = result;
