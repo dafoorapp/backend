@@ -17,7 +17,7 @@ request.create = function (req, res, next) {
 request.getAllStudentReq = function (req, res, next) {
     // SELECT * from requests, students where requests.student_id = students.user_id AND ;
     // SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, tutors.name FROM requests, tutors WHERE student_id=$1 AND requests.tutors_id = tutors.user_id;
-    db.manyOrNone("SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, tutors.name FROM requests, tutors WHERE student_id=$1 AND requests.tutor_id = tutors.user_id;",
+    db.manyOrNone("SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, requests.id, tutors.name FROM requests, tutors WHERE student_id=$1 AND requests.tutor_id = tutors.user_id;",
     [req.params.student_id])
     .then(result => {
         res.locals.requests = result;
