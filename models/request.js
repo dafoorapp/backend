@@ -34,7 +34,7 @@ request.getAllStudentReq = function (req, res, next) {
 request.getAllTutorReq = function (req, res, next) {
     // SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, tutors.name FROM requests, students WHERE tutor_id=$1 AND requests.student_id = students.user_id;
     //SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, students.name FROM requests INNER JOIN students ON (requests.student_id = students.user_id) WHERE (tutor_id=2);
-    db.manyOrNone("SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, students.name FROM requests, students WHERE student_id=$1 AND requests.student_id = students.user_id;",
+    db.manyOrNone("SELECT requests.id, requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, students.name, students.gender, students.phone_number , students.location FROM requests, students WHERE tutor_id=$1 AND requests.student_id = students.user_id;",
     [req.params.tutor_id])
     .then(result => {
         res.locals.requests = result;
