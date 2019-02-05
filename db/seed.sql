@@ -72,3 +72,4 @@ INSERT INTO requests (student_id, tutor_id, subject, duration, cost , status, da
 
 -- SELECT requests.studnet_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, students.name FROM requests INNER JOIN students ON (requests.studnet_id = students.user_id) WHERE (tutor_id=2);
 -- SELECT students.name, tutors.name FROM students, tutors WHERE ST_DWithin(students.location, tutors.location, 100);
+
