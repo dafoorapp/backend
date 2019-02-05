@@ -42,9 +42,9 @@ CREATE TABLE requests (
     cost varchar not null,
     status varchar not null,
     date date not null,
-    studnet_id int not null,
+    student_id int not null,
     tutor_id int not null,
-    FOREIGN KEY (studnet_id) REFERENCES users,
+    FOREIGN KEY (student_id) REFERENCES users,
     FOREIGN KEY (tutor_id) REFERENCES users
 );
 
@@ -65,9 +65,9 @@ INSERT INTO tutors (user_id, name, gender, location, phone_number, subject, rati
     (3,'Yahya', 'M', ST_GeomFromText('POINT(20.240377 47.791984)' , 4326), '097654', '{"Math" ,"Computer"}', 3.5, 10, true)
 ;
 
-INSERT INTO requests (studnet_id, tutor_id, subject, duration, cost , status, date) VALUES
+INSERT INTO requests (student_id, tutor_id, subject, duration, cost , status, date) VALUES
     (1, 2, 'math', '2', '200', 'active', '2019-02-10'),
-    (2, 2, 'computer', '2', '200', 'pending', '2019-02-10')
+    (4, 2, 'math', '1', '100', 'pending', '2019-02-02')
 ;
 
 -- SELECT requests.studnet_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, students.name FROM requests INNER JOIN students ON (requests.studnet_id = students.user_id) WHERE (tutor_id=2);
