@@ -17,7 +17,7 @@ request.create = function (req, res, next) {
 request.getAllStudentReq = function (req, res, next) {
     // SELECT * from requests, students where requests.student_id = students.user_id AND ;
     // SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, tutors.name FROM requests, tutors WHERE student_id=$1 AND requests.tutors_id = tutors.user_id;
-    db.manyOrNone("SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, tutors.name FROM requests, tutors WHERE student_id=$1 AND requests.tutor_id = tutors.user_id;",
+    db.manyOrNone("SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, requests.id, tutors.name FROM requests, tutors WHERE student_id=$1 AND requests.tutor_id = tutors.user_id;",
     [req.params.student_id])
     .then(result => {
         res.locals.requests = result;
@@ -34,7 +34,7 @@ request.getAllStudentReq = function (req, res, next) {
 request.getAllTutorReq = function (req, res, next) {
     // SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, tutors.name FROM requests, students WHERE tutor_id=$1 AND requests.student_id = students.user_id;
     //SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, students.name FROM requests INNER JOIN students ON (requests.student_id = students.user_id) WHERE (tutor_id=2);
-    db.manyOrNone("SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, students.name FROM requests, students WHERE student_id=$1 AND requests.student_id = students.user_id;",
+    db.manyOrNone("SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, students.name FROM requests, students WHERE tutor_id=$1 AND requests.student_id = students.user_id;",
     [req.params.tutor_id])
     .then(result => {
         res.locals.requests = result;
