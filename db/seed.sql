@@ -62,7 +62,7 @@ INSERT INTO students (user_id,name, gender, location, phone_number) VALUES
 
 INSERT INTO tutors (user_id, name, gender, location, phone_number, subject, rating, price, state) VALUES
     (2,'Nada', 'F', ST_GeomFromText('POINT(24.7155904 46.6548654)' , 4326), '09876543', '{"Math" , "Physics"}', 5, 20, true),
-    (3,'Yahya', 'M', ST_GeomFromText('POINT(20.240377 47.791984)' , 4326), '097654', '{"Math" ,"Computer"}', 3.5, 10, true)
+    (3,'Yahya', 'M', ST_GeomFromText('POINT(24.718495 46.653049)' , 4326), '097654', '{"Math" ,"Computer"}', 3.5, 10, true)
 ;
 
 INSERT INTO requests (student_id, tutor_id, subject, duration, cost , status, date) VALUES
