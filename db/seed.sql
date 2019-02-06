@@ -1,10 +1,10 @@
-DROP DATABASE IF EXISTS dafoor;
-CREATE DATABASE dafoor;
+-- DROP DATABASE IF EXISTS dafoor;
+-- CREATE DATABASE dafoor;
 
-\c dafoor
+-- \c dafoor
 
-CREATE EXTENSION postgis; 
-CREATE EXTENSION postgis_topology; 
+-- CREATE EXTENSION postgis; 
+-- CREATE EXTENSION postgis_topology; 
 
 
 CREATE TABLE users (
@@ -69,7 +69,3 @@ INSERT INTO requests (student_id, tutor_id, subject, duration, cost , status, da
     (1, 2, 'math', '2', '200', 'active', '2019-02-10'),
     (4, 2, 'math', '1', '100', 'pending', '2019-02-02')
 ;
-
--- SELECT requests.studnet_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, students.name FROM requests INNER JOIN students ON (requests.studnet_id = students.user_id) WHERE (tutor_id=2);
--- SELECT students.name, tutors.name FROM students, tutors WHERE ST_DWithin(students.location, tutors.location, 100);
-
