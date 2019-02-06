@@ -4,7 +4,6 @@ const student = {};
 // req.body.user_id
 student.create = function (req, res, next) {
     let location = req.body.location;
-
     db.one(`INSERT INTO students (name, gender, phone_number, location, user_id) VALUES ($1, $2, $3, ST_GeomFromText('POINT(${location})',4326), $5) RETURNING *;`,
     [req.body.name, req.body.gender, req.body.phone_number, req.body.location, req.body.user_id])
     .then(result => {
@@ -20,7 +19,7 @@ student.create = function (req, res, next) {
 //find user 
 student.find = function (req, res, next) {
     console.log('jsdjsajd');
-    db.oneOrNone("SELECT * FROM students WHERE user_id=$1;",
+    db.oneOrNone(`SELECT * FROM students WHERE user_id=$1;`,
     [req.params.user_id])
     .then(result => {
         console.log(result);
