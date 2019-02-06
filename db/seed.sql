@@ -49,7 +49,7 @@ CREATE TABLE requests (
 );
 
 INSERT INTO users (email, type) VALUES 
-    ('moroj@gmail.com', 'student'),
+    ('moroj.alh@gmail.com', 'student'),
     ('nada@gmail.com', 'tutor'),
     ('yahya@gmail.com', 'tutor'),
     ('sraj@sraj.com' , 'student')
