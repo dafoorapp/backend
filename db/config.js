@@ -5,9 +5,10 @@ const config = {
    host: 'localhost',
    port: 5432,
    database: 'dafoor',
-   user: 'Moroj' // your username here!!
+   user: 'nadaabdulkarem' // your username here!!
 }
  
-const connection = pgInstance(config);
+const connection = pgInstance(process.env.DATABASE_URL || config);
+
  
 module.exports = connection; 
