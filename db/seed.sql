@@ -1,3 +1,12 @@
+-- DROP DATABASE IF EXISTS dafoor;
+-- CREATE DATABASE dafoor;
+
+-- \c dafoor
+
+-- CREATE EXTENSION postgis; 
+-- CREATE EXTENSION postgis_topology; 
+
+
 CREATE TABLE users (
     id serial primary key,
     email varchar unique not null,
