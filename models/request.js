@@ -2,8 +2,8 @@ const db = require('../db/config');
 const request = {};
 
 request.create = function (req, res, next) {
-    db.one("INSERT INTO requests (subject, duration, cost, student_id, tutor_id, status, date) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;",
-    [req.body.subject, req.body.duration, req.body.cost, req.body.student_id, req.body.tutor_id, req.body.status, req.body.date])
+    db.one("INSERT INTO requests (subject, duration, cost, student_id, tutor_id, status, date) VALUES ($1, $2, $3, $4, $5, $6, NOW()) RETURNING *;",
+    [req.body.subject, req.body.duration, req.body.cost, req.body.student_id, req.body.tutor_id, req.body.status])
     .then(result => {
         res.locals.request = result;
         next()
@@ -35,7 +35,7 @@ request.getAllStudentReq = function (req, res, next) {
 request.getAllTutorReq = function (req, res, next) {
     // SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, tutors.name FROM requests, students WHERE tutor_id=$1 AND requests.student_id = students.user_id;
     //SELECT requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, students.name FROM requests INNER JOIN students ON (requests.student_id = students.user_id) WHERE (tutor_id=2);
-    db.manyOrNone("SELECT requests.id, requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, students.name, students.gender, students.phone_number , students.location FROM requests, students WHERE tutor_id=$1 AND requests.student_id = students.user_id;",
+    db.manyOrNone("SELECT requests.id, requests.student_id, requests.tutor_id, requests.subject, requests.duration, requests.cost, requests.status, requests.date, students.name, students.gender, students.phone_number , students.ST_X(location), students.ST_Y(location) FROM requests, students WHERE tutor_id=$1 AND requests.student_id = students.user_id;",
     [req.params.tutor_id])
     .then(result => {
         res.locals.requests = result;
