@@ -1,5 +1,5 @@
 const express = require('express');
-const port = process.env.PORT || 3000;
+const PORT = process.env.port || 3000;
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
@@ -28,5 +28,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log('listening on localhost:' + port);
+  console.log('listening on localhost:' + PORT);
 }); 
