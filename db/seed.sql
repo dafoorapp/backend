@@ -1,10 +1,10 @@
-DROP DATABASE IF EXISTS dafoor;
-CREATE DATABASE dafoor;
+-- DROP DATABASE IF EXISTS dafoor;
+-- CREATE DATABASE dafoor;
 
-\c dafoor
+-- \c dafoor
 
-CREATE EXTENSION postgis; 
-CREATE EXTENSION postgis_topology; 
+-- CREATE EXTENSION postgis; 
+-- CREATE EXTENSION postgis_topology; 
 
 
 CREATE TABLE users (
@@ -69,4 +69,3 @@ INSERT INTO requests (student_id, tutor_id, subject, duration, cost , status, da
     (1, 2, 'math', '2', '200', 'active', '2019-02-10'),
     (4, 2, 'math', '1', '100', 'pending', '2019-02-02')
 ;
-
